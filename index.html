@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -67,7 +66,7 @@
             background: rgba(26, 9, 37, 0.95);
             display: flex;
             justify-content: center;
-            gap: 8px;
+            gap: 6px;
             padding: 12px;
             border-bottom: 2px solid #ff69b4;
             position: fixed;
@@ -81,11 +80,11 @@
             background: transparent;
             border: 1px solid #ff69b4;
             color: #ffb6c1;
-            padding: 6px 12px;
+            padding: 6px 10px;
             border-radius: 20px;
             cursor: pointer;
             font-weight: 600;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             transition: 0.3s;
             white-space: nowrap;
         }
@@ -231,6 +230,45 @@
             font-size: 2rem;
             color: #ffb6c1;
         }
+        .gallery-container {
+            max-width: 700px;
+            width: 100%;
+            text-align: center;
+            z-index: 2;
+            max-height: 75vh;
+            overflow-y: auto;
+            padding: 10px;
+        }
+        .gallery-container h2 {
+            font-family: 'Sacramento', cursive;
+            font-size: 3rem;
+            color: #ffb6c1;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px #ff1493;
+        }
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .photo-item {
+            background: rgba(255, 182, 193, 0.1);
+            border: 2px solid #ff69b4;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.3);
+            transition: transform 0.3s ease;
+        }
+        .photo-item:hover {
+            transform: scale(1.05);
+        }
+        .photo-item img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -246,6 +284,7 @@
             <button class="tab-btn" onclick="switchTab(event, 'reasons')">19 Razones 💌</button>
             <button class="tab-btn" onclick="switchTab(event, 'profile')">Mi Niña Bonita 🌸</button>
             <button class="tab-btn" onclick="switchTab(event, 'letter')">Mi Mensaje 💖</button>
+            <button class="tab-btn" onclick="switchTab(event, 'gallery')">Galería 📸</button>
         </nav>
 
         <div id="galaxy" class="section active">
@@ -285,13 +324,31 @@
                     <p>Todos los dias quiero despertar y saber q estas conmigo , me hace feliz saber mi amor que apesar de todo lo q hemos pasado o a pasadp hemos podido construir una confianza , un nivel de complicidad me encanta y me encantaria poder seguir viviendo eso contigo</p>
                     <p>En este dia tan especia quiero que sepas q me da mucho gusto mi amor bonito q seas mi novia y tambien quiero q sigas cumpliendo muchos años a lado mio y de tu familia</p>
                     <p>Quiero que en realidad mi amor lo nuestro se de bonito. Hare lo posible para ir a verte y poder compartir contigo apreciarte mi niña bonita de cerca no pararia de mirarte quiero q depas q se me hace mucha ilusion verte hablar contigo</p>
-                    <p><em>(Y es que pensar en el momento en que nos volvamos a encontrar me llena el alma de alegría; imaginarme llegando a abrazarte, tomándote de la mano y compartiendo momentos juntos es la fuerza que me impulsa todos los días. Admiro tanto la hermosa mujer en la que te estás convirtiendo, tu disciplina, tus desvelos y esa vocación tan noble que tienes).</em></p>
+                    <p>Admiro tanto la hermosa mujer en la que te estás convirtiendo, tu disciplina, tus desvelos y esa vocación tan noble que tienes para la medicina.</p>
                     <p>Se que no tenemos mucho en comun a nivel fisico somos totalmente diferentes pero mas a nivel escencia conpartimos el mismo pensamiento... Me sorprende cómo, a pesar de la distancia, logramos conectar tan profundo y entendernos de una forma tan especial.</p>
                     <p>Te quiero mucho mucho. Te amo demasiado espero que sepas q siempre te amare y te dare mucho amor te amo mucho que dios te bendiga y te de sabiduria para terminar tu carrera , en el nombre de dios mi amor. Que cada meta que te propongas se haga realidad, porque sé lo mucho que te esfuerzas y el futuro tan brillante que tienes por delante.</p>
                     <p>Gracias por existir, por elegirme, por compartir tu hermosa vida conmigo y por hacer mis días infinitamente más felices con solo saber que estás.</p>
                 </div>
                 <div class="letter-signature">
                     Te amo mi amor Yanssy Daniela 💖
+                </div>
+            </div>
+        </div>
+
+        <div id="gallery" class="section">
+            <div class="gallery-container">
+                <h2>Galería de su Carita Bonita 📸✨</h2>
+                <p style="color: #ffb6c1; margin-bottom: 15px;">Los momentos y recuerdos de la niña de mis ojos</p>
+                <div class="photo-grid">
+                    <div class="photo-item"><img src="image_2.png" alt="Yanssy Daniela"></div>
+                    <div class="photo-item"><img src="image_3.png" alt="Yanssy Daniela"></div>
+                    <div class="photo-item"><img src="image_4.png" alt="Yanssy Daniela"></div>
+                    <div class="photo-item"><img src="image_5.png" alt="Yanssy Daniela"></div>
+                    <div class="photo-item"><img src="image_6.png" alt="Yanssy Daniela"></div>
+                    <div class="photo-item"><img src="image_7.png" alt="Yanssy Daniela"></div>
+                    <div class="photo-item"><img src="image_8.png" alt="Yanssy Daniela"></div>
+                    <div class="photo-item"><img src="image_9.png" alt="Yanssy Daniela"></div>
+                    <div class="photo-item"><img src="image_10.png" alt="Yanssy Daniela"></div>
                 </div>
             </div>
         </div>
@@ -425,5 +482,3 @@
     </script>
 </body>
 </html>
-
-```
