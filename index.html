@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Cumpleaños Mi Amor - 19 Años</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Sacramento&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #0b0b16;
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            height: 100vh;
+        }
+        /* Pantalla de inicio */
+        #welcome-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1a0925, #ffb6c1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 0.8s ease;
+        }
+        #welcome-screen h1 {
+            font-family: 'Sacramento', cursive;
+            font-size: 3.5rem;
+            color: #fff;
+            text-shadow: 0 0 20px #ff69b4;
+            margin-bottom: 20px;
+            text-align: center;
+            padding: 0 20px;
+        }
+        .btn-start {
+            background: #ff1493;
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            font-size: 1.2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 0 25px #ff69b4;
+            transition: 0.3s;
+            font-weight: 600;
+        }
+        .btn-start:hover {
+            transform: scale(1.1);
+            background: #ff69b4;
+        }
+
+        /* Contenedor Principal */
+        #main-app {
+            display: none;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        /* Barra de Navegación */
+        nav {
+            background: rgba(26, 9, 37, 0.9);
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 12px;
+            border-bottom: 2px solid #ff69b4;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+        nav button {
+            background: transparent;
+            border: 1px solid #ff69b4;
+            color: #ffb6c1;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        nav button.active, nav button:hover {
+            background: #ff69b4;
+            color: white;
+            box-shadow: 0 0 10px #ff69b4;
+        }
+
+        /* Secciones */
+        .section {
+            display: none;
+            height: calc(100vh - 60px);
+            margin-top: 60px;
+            padding: 20px;
+            overflow-y: auto;
+            position: relative;
+        }
+        .section.active {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Sección Galaxia */
+        #galaxy-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        .galaxy-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            pointer-events: none;
+        }
+        .galaxy-content h2 {
+            font-family: 'Sacramento', cursive;
+            font-size: 4rem;
+            color: #ffb6c1;
+            text-shadow: 0 0 15px #ff1493;
+        }
+
+        /* Sección Razones (Ticket) */
+        .ticket-card {
+            background: #fff;
+            color: #333;
+            width: 100%;
+            max-width: 400px;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.4);
+            border: 2px dashed #ff69b4;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        .ticket-card h3 {
+            color: #ff1493;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        .reason-box {
+            font-size: 1.1rem;
+            margin: 20px 0;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+        }
+        .btn-reason {
+            background: #ff1493;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* Sección Mi Niña Bonita */
+        .cute-card {
+            background: rgba(255, 182, 193, 0.1);
+            border: 2px solid #ff69b4;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 500px;
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.3);
+            z-index: 2;
+        }
+        .cute-card h2 {
+            color: #ffb6c1;
+            font-family: 'Sacramento', cursive;
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        .cute-card p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #fce4ec;
+        }
+        .decor-icons {
+            font-size: 2rem;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Pantalla de Bienvenida -->
+    <div id="welcome-screen">
+        <h1>Felices 19 Años, Mi Niña Bonita 💖</h1>
+        <button class="btn-start" onclick="startExperience()">Entrar a tu sorpresa ✨</button>
+    </div>
+
+    <!-- Aplicación Principal -->
+    <div id="main-app">
+        <nav>
+            <button class="tab-btn active" onclick="switchTab(event, 'galaxy')">Galaxia 🌌</button>
+            <button class="tab-btn" onclick="switchTab(event, 'reasons')">19 Razones 💌</button>
+            <button class="tab-btn" onclick="switchTab(event, 'profile')">Mi Niña Bonita 🌸</button>
+        </nav>
+
+        <!-- Pestaña 1: Galaxia -->
+        <div id="galaxy" class="section active">
+            <div class="galaxy-content">
+                <h2>Contigo, mi universo tiene sentido</h2>
+                <p style="color: #ffb6c1; margin-top: 10px;">Eres la luz que ilumina toda mi oscuridad ✨</p>
+            </div>
+            <!-- Aquí puedes integrar efectos de estrellas con JS -->
+        </div>
+
+        <!-- Pestaña 2: Razones -->
+        <div id="reasons" class="section">
+            <div class="ticket-card">
+                <h3>🎟️ Recibo de Amor N.° 19</h3>
+                <p style="font-size: 0.9rem; color: #666;">Especial para la cumpleañera más hermosa</p>
+                <div class="reason-box" id="reason-text">
+                    Presiona el botón para descubrir por qué te amo tanto ❤️
+                </div>
+                <button class="btn-reason" onclick="nextReason()">Siguiente Razón ✨</button>
+            </div>
+        </div>
+
+        <!-- Pestaña 3: Niña Bonita -->
+        <div id="profile" class="section">
+            <div class="cute-card">
+                <h2>Para la niña de mis ojos</h2>
+                <p>
+                    Hoy cumples 19 años y le doy gracias a la vida por tenerte. Eres una estudiante de medicina maravillosa, una persona con un corazón gigante, de carita preciosa y una sonrisa que es mi amanecer favorito todos los días. 
+                </p>
+                <div class="decor-icons">🎀 🐱 ⭐ 🐶 💖</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function startExperience() {
+            document.getElementById('welcome-screen').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('welcome-screen').style.display = 'none';
+                document.getElementById('main-app').style.display = 'flex';
+            }, 800);
+        }
+
+        function switchTab(evt, tabName) {
+            let sections = document.getElementsByClassName('section');
+            for (let sec of sections) {
+                sec.classList.remove('active');
+            }
+            let buttons = document.getElementsByClassName('tab-btn');
+            for (let btn of buttons) {
+                btn.classList.remove('active');
+            }
+            document.getElementById(tabName).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }
+
+        // 19 Razones para regalarle
+        const reasons = [
+            "1. Porque tu sonrisa es la luz que atraviesa cualquier oscuridad.",
+            "2. Por la forma en que te esfuerzas y estudias con tanta dedicación.",
+            "3. Porque eres una niña hermosa por dentro y por fuera.",
+            "4. Por cada risa y momento feliz que compartimos.",
+            "5. Porque cada día a tu distancia o cercanía se siente especial.",
+            "6. Por la ternura con la que miras y tratas a los demás.",
+            "7. Porque tus mensajes siempre logran alegrarme el día completo.",
+            "8. Porque tienes los ojos más bonitos del mundo.",
+            "9. Por lo inteligente y capaz que eres en todo lo que te propones.",
+            "10. Porque eres mi paz en medio del caos.",
+            "11. Por cómo brillas cumpliendo hoy tus 19 años.",
+            "12. Porque amo cuando me compartes tus ocurrencias y gustos.",
+            "13. Por la complicidad tan hermosa que hemos construido.",
+            "14. Porque haces que mi corazón lata más rápido con solo pensarte.",
+            "15. Porque eres mi persona favorita en todo el universo.",
+            "16. Por la valentía con la que enfrentas tus metas.",
+            "17. Porque cada detalle tuyo se vuelve mi tesoro favorito.",
+            "18. Porque el simple hecho de saber que existes hace que mi vida sea mejor.",
+            "19. ¡Porque te amo con toda el alma y te elijo hoy y siempre! 💖"
+        ];
+
+        let currentReasonIndex = 0;
+        function nextReason() {
+            const textBox = document.getElementById('reason-text');
+            textBox.style.opacity = 0;
+            setTimeout(() => {
+                textBox.innerText = reasons[currentReasonIndex];
+                textBox.style.opacity = 1;
+                currentReasonIndex = (currentReasonIndex + 1) % reasons.length;
+            }, 200);
+        }
+    </script>
+</body>
+</html>
