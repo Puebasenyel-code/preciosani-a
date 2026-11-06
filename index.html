@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feliz Cumpleaños Yanssy Daniela - 19 Años 💖</title>
+    <title>Feliz Cumpleaños Mi Amor - 19 Años 💖</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Sacramento&display=swap" rel="stylesheet">
     <style>
         * {
@@ -35,7 +35,7 @@
         }
         #welcome-screen h1 {
             font-family: 'Sacramento', cursive;
-            font-size: 3.2rem;
+            font-size: 3.5rem;
             color: #fff;
             text-shadow: 0 0 20px #ff69b4;
             margin-bottom: 20px;
@@ -115,7 +115,7 @@
             justify-content: center;
         }
 
-        /* Sección Galaxia 3D y Animación de Spider-Man & Hello Kitty */
+        /* Sección Galaxia 3D */
         #galaxy {
             background: #000;
             overflow: hidden;
@@ -129,99 +129,18 @@
             height: 100%;
             z-index: 1;
         }
-
-        .spider-kitty-container {
-            position: relative;
-            z-index: 3;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            animation: dropAndSwing 3s ease-in-out infinite alternate;
-            margin-bottom: 15px;
-        }
-
-        .web-string {
-            width: 2px;
-            height: 100px;
-            background: rgba(255, 255, 255, 0.6);
-            position: absolute;
-            top: -100px;
-            box-shadow: 0 0 5px #fff;
-        }
-
-        .couple-circle {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            border: 4px solid #ff69b4;
-            box-shadow: 0 0 25px #ff1493, inset 0 0 15px #ff69b4;
-            background: linear-gradient(135deg, #ffb6c1, #ff1493);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .couple-circle img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        @keyframes dropAndSwing {
-            0% { transform: translateY(-30px) rotate(-3deg); }
-            50% { transform: translateY(10px) rotate(3deg); }
-            100% { transform: translateY(-30px) rotate(-3deg); }
-        }
-
         .galaxy-overlay {
             position: relative;
             z-index: 2;
             text-align: center;
             pointer-events: none;
+            margin-top: -60vh;
         }
         .galaxy-overlay h2 {
             font-family: 'Sacramento', cursive;
-            font-size: 2.8rem;
+            font-size: 3.2rem;
             color: #ffb6c1;
             text-shadow: 0 0 20px #ff1493;
-        }
-
-        /* Sección Mensaje Especial */
-        .message-card {
-            background: rgba(20, 10, 30, 0.9);
-            border: 2px solid #ff69b4;
-            padding: 30px;
-            border-radius: 20px;
-            max-width: 650px;
-            width: 100%;
-            box-shadow: 0 0 30px rgba(255, 105, 180, 0.4);
-            z-index: 2;
-            text-align: left;
-            max-height: 80vh;
-            overflow-y: auto;
-        }
-        .message-card h2 {
-            font-family: 'Sacramento', cursive;
-            color: #ffb6c1;
-            font-size: 3rem;
-            text-align: center;
-            margin-bottom: 20px;
-            text-shadow: 0 0 10px #ff1493;
-        }
-        .message-card p {
-            font-size: 1.05rem;
-            line-height: 1.8;
-            color: #fce4ec;
-            margin-bottom: 15px;
-        }
-        .message-signature {
-            text-align: right;
-            font-family: 'Sacramento', cursive;
-            font-size: 2rem;
-            color: #ff69b4;
-            margin-top: 20px;
         }
 
         /* Sección Razones (Ticket) */
@@ -261,75 +180,80 @@
             cursor: pointer;
             font-weight: bold;
         }
+
+        /* Sección Mi Niña Bonita */
+        .cute-card {
+            background: rgba(255, 182, 193, 0.1);
+            border: 2px solid #ff69b4;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 500px;
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.3);
+            z-index: 2;
+        }
+        .cute-card h2 {
+            color: #ffb6c1;
+            font-family: 'Sacramento', cursive;
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        .cute-card p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #fce4ec;
+        }
+        .decor-icons {
+            font-size: 2rem;
+            margin-top: 15px;
+        }
     </style>
 </head>
 <body>
 
     <!-- Pantalla de Bienvenida -->
     <div id="welcome-screen">
-        <h1>Felices 19 Años, Yanssy Daniela 💖</h1>
+        <h1>Felices 19 Años, Mi Niña Bonita 💖</h1>
         <button class="btn-start" onclick="startExperience()">Entrar a tu sorpresa ✨</button>
     </div>
 
     <!-- Aplicación Principal -->
     <div id="main-app">
         <nav>
-            <button class="tab-btn active" onclick="switchTab(event, 'galaxy')">Galaxia & Spidey 🌌</button>
-            <button class="tab-btn" onclick="switchTab(event, 'message')">Carta de Amor 💌</button>
-            <button class="tab-btn" onclick="switchTab(event, 'reasons')">19 Razones ✨</button>
+            <button class="tab-btn active" onclick="switchTab(event, 'galaxy')">Galaxia 3D 🌌</button>
+            <button class="tab-btn" onclick="switchTab(event, 'reasons')">19 Razones 💌</button>
+            <button class="tab-btn" onclick="switchTab(event, 'profile')">Mi Niña Bonita 🌸</button>
         </nav>
 
-        <!-- Pestaña 1: Galaxia 3D con Spider-Man y Hello Kitty -->
+        <!-- Pestaña 1: Galaxia 3D Interactiva -->
         <div id="galaxy" class="section active">
             <canvas id="galaxy-canvas"></canvas>
-            
-            <div class="spider-kitty-container">
-                <div class="web-string"></div>
-                <div class="couple-circle">
-                    <img src="https://i.imgur.com/7gK1Q2y.jpeg" alt="Spider-Man y Hello Kitty">
-                </div>
-            </div>
-
             <div class="galaxy-overlay">
-                <h2>Tu Sonrisa Es Mi Universo 💫</h2>
-                <p style="color: #ffb6c1; font-size: 1.1rem; text-shadow: 0 0 10px #ff1493; margin-top: 5px;">Feliz cumpleaños número 19, mi niña bonita ❤️</p>
+                <h2>Amor Eterno 💫</h2>
+                <p style="color: #ffb6c1; font-size: 1.1rem; text-shadow: 0 0 10px #ff1493;">Tú y yo en nuestro propio universo</p>
             </div>
         </div>
 
-        <!-- Pestaña 2: Tu Mensaje Detallista Ampliado -->
-        <div id="message" class="section">
-            <div class="message-card">
-                <h2>Para la dueña de mi corazón</h2>
-                <p>
-                    Hoy cumples 19 años y le doy gracias a la vida por tenerte. Eres una niña muy pero muy preciosa, sabes lo mucho que te aprecio, una persona con un corazón gigante, de carita preciosa y una sonrisa que es mi amanecer favorito todos los días.
-                </p>
-                <p>
-                    Todos los días quiero despertar y saber que estás conmigo. Me hace feliz saber, mi amor, que a pesar de todo lo que hemos pasado o ha pasado, hemos podido construir una confianza y un nivel de complicidad único que me encanta, y me encantaría poder seguir viviendo eso contigo por mucho tiempo más.
-                </p>
-                <p>
-                    En este día tan especial quiero que sepas que me da mucho gusto, mi amor bonito, que seas mi novia. También quiero que sigues cumpliendo muchos años más al lado mío y de tu familia, brillando con esa luz tan hermosa que te caracteriza mientras te esfuerzas por tu carrera.
-                </p>
-                <p>
-                    Quiero que en realidad, mi amor, lo nuestro se dé bonito. Haré lo posible para ir a verte y poder compartir contigo, apreciarte mi niña bonita de cerca; no pararía de mirarte. Quiero que sepas que se me hace mucha ilusión verte y hablar contigo.
-                </p>
-                <p>
-                    Sé que no tenemos mucho en común a nivel físico y somos totalmente diferentes, pero más a nivel esencia compartimos el mismo pensamiento y una conexión increíble. Te quiero mucho, mucho. Te amo demasiado, espero que sepas que siempre te amaré y te daré mucho amor. Que Dios te bendiga y te dé sabiduría para terminar tu carrera con éxito, en el nombre de Dios, mi amor.
-                </p>
-                <div class="message-signature">
-                    Te amo mi amor, Yanssy Daniela 💖
-                </div>
-            </div>
-        </div>
-
-        <!-- Pestaña 3: Razones -->
+        <!-- Pestaña 2: Razones -->
         <div id="reasons" class="section">
             <div class="ticket-card">
                 <h3>🎟️ Recibo de Amor N.° 19</h3>
-                <p style="font-size: 0.9rem; color: #666;">Especial para Yanssy Daniela en sus 19 años</p>
+                <p style="font-size: 0.9rem; color: #666;">Especial para la cumpleañera más hermosa</p>
                 <div class="reason-box" id="reason-text">
                     Presiona el botón para descubrir por qué te amo tanto ❤️
                 </div>
                 <button class="btn-reason" onclick="nextReason()">Siguiente Razón ✨</button>
+            </div>
+        </div>
+
+        <!-- Pestaña 3: Niña Bonita -->
+        <div id="profile" class="section">
+            <div class="cute-card">
+                <h2>Para la niña de mis ojos</h2>
+                <p>
+                    Hoy cumples 19 años y le doy gracias a la vida por tenerte. Eres una estudiante de medicina maravillosa, una persona con un corazón gigante, de carita preciosa y una sonrisa que es mi amanecer favorito todos los días. 
+                </p>
+                <div class="decor-icons">🎀 🐱 ⭐ 🐶 💖</div>
             </div>
         </div>
     </div>
@@ -340,7 +264,7 @@
             setTimeout(() => {
                 document.getElementById('welcome-screen').style.display = 'none';
                 document.getElementById('main-app').style.display = 'flex';
-                initGalaxy();
+                initGalaxy(); // Iniciar animación 3D al entrar
             }, 800);
         }
 
@@ -357,26 +281,27 @@
             evt.currentTarget.classList.add('active');
         }
 
+        // 19 Razones
         const reasons = [
             "1. Porque tu sonrisa es la luz que atraviesa cualquier oscuridad.",
-            "2. Por la forma en que te esfuerzas cada día con tus estudios y tu carrera.",
+            "2. Por la forma en que te esfuerzas y estudias con tanta dedicación.",
             "3. Porque eres una niña hermosa por dentro y por fuera.",
-            "4. Por cada risa, llamada y momento feliz que compartimos.",
-            "5. Porque a pesar de la distancia, cada día a tu lado se siente especial.",
-            "6. Por la ternura con la que tratas a los demás y a tu familia.",
+            "4. Por cada risa y momento feliz que compartimos.",
+            "5. Porque cada día a tu distancia o cercanía se siente especial.",
+            "6. Por la ternura con la que miras y tratas a los demás.",
             "7. Porque tus mensajes siempre logran alegrarme el día completo.",
-            "8. Porque tienes los ojos más bonitos y una carita preciosa.",
+            "8. Porque tienes los ojos más bonitos del mundo.",
             "9. Por lo inteligente y capaz que eres en todo lo que te propones.",
-            "10. Porque eres mi paz en medio de cualquier momento difícil.",
-            "11. Por cómo brillas cumpliendo hoy tus hermosos 19 años.",
-            "12. Porque amo cuando compartimos nuestros pensamientos y gustos.",
-            "13. Por la complicidad tan hermosa que hemos sabido construir.",
+            "10. Porque eres mi paz en medio del caos.",
+            "11. Por cómo brillas cumpliendo hoy tus 19 años.",
+            "12. Porque amo cuando me compartes tus ocurrencias y gustos.",
+            "13. Por la complicidad tan hermosa que hemos construido.",
             "14. Porque haces que mi corazón lata más rápido con solo pensarte.",
             "15. Porque eres mi persona favorita en todo el universo.",
-            "16. Por la valentía y el amor con el que enfrentas tus metas.",
-            "17. Porque cada detalle tuyo se vuelve mi tesoro más preciado.",
+            "16. Por la valentía con la que enfrentas tus metas.",
+            "17. Porque cada detalle tuyo se vuelve mi tesoro favorito.",
             "18. Porque el simple hecho de saber que existes hace que mi vida sea mejor.",
-            "19. ¡Porque te amo con toda el alma, Yanssy Daniela, y te elijo hoy y siempre! 💖"
+            "19. ¡Porque te amo con toda el alma y te elijo hoy y siempre! 💖"
         ];
 
         let currentReasonIndex = 0;
@@ -390,6 +315,7 @@
             }, 200);
         }
 
+        // Motor de la Galaxia 3D con Partículas y Corazón en Espiral
         function initGalaxy() {
             const canvas = document.getElementById('galaxy-canvas');
             const ctx = canvas.getContext('2d');
@@ -421,6 +347,7 @@
                 let cx = canvas.width / 2;
                 let cy = canvas.height / 2;
 
+                // Dibujar partículas de la galaxia en rotación
                 particles.forEach(p => {
                     p.z -= 1.5;
                     if (p.z <= 0) p.z = canvas.width;
@@ -437,6 +364,25 @@
                         ctx.fill();
                     }
                 });
+
+                // Dibujar el corazón central parpadeante estilo 3D
+                ctx.save();
+                ctx.translate(cx, cy - 50);
+                let scale = 1 + Math.sin(Date.now() * 0.005) * 0.1;
+                ctx.scale(scale, scale);
+                ctx.beginPath();
+                let topCurveHeight = 20;
+                ctx.moveTo(0, topCurveHeight);
+                // Dibujar forma de corazón con partículas/brillo
+                ctx.bezierCurveTo(0, 0, -40, -40, -40, -70);
+                ctx.bezierCurveTo(-40, -110, 0, -110, 0, -60);
+                ctx.bezierCurveTo(0, -110, 40, -110, 40, -70);
+                ctx.bezierCurveTo(40, -40, 0, 0, 0, topCurveHeight);
+                ctx.fillStyle = '#ff1493';
+                ctx.shadowColor = '#ff69b4';
+                ctx.shadowBlur = 30;
+                ctx.fill();
+                ctx.restore();
 
                 requestAnimationFrame(animate);
             }
