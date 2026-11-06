@@ -278,7 +278,7 @@
             <button class="tab-btn" onclick="switchTab(event, 'reasons')">19 Razones ✨</button>
         </nav>
 
-        <!-- Pestaña 1: Galaxia 3D con Mensajes 3D Flotantes y Animación -->
+        <!-- Pestaña 1: Galaxia 3D Fluida con Spider-Man y Hello Kitty -->
         <div id="galaxy" class="section active">
             <canvas id="galaxy-canvas"></canvas>
             
@@ -389,7 +389,7 @@
             }, 150);
         }
 
-        // Galaxia 3D con Mensajitos Flotantes en 3D (Optimizada y Fluida)
+        // Galaxia 3D de estrellas limpia y fluida
         function initGalaxy() {
             const canvas = document.getElementById('galaxy-canvas');
             const ctx = canvas.getContext('2d');
@@ -401,9 +401,8 @@
             window.addEventListener('resize', resize);
             resize();
 
-            // Partículas de estrellas en 3D
             let particles = [];
-            for (let i = 0; i < 90; i++) {
+            for (let i = 0; i < 80; i++) {
                 particles.push({
                     x: (Math.random() - 0.5) * canvas.width,
                     y: (Math.random() - 0.5) * canvas.height,
@@ -413,32 +412,13 @@
                 });
             }
 
-            // Mensajitos de amor viajando en el espacio 3D
-            const lovePhrases = [
-                "Te Amo ❤️", "My Love ✨", "Eres preciosa 🌸", 
-                "Me encantas 😍", "Amor de mi vida 💫", "Niña bonita 💖", 
-                "19 Años 🎉", "Siempre tú 🌟", "Mi universito 🌌", "Te adoro 💕"
-            ];
-
-            let floatingTexts = [];
-            for (let i = 0; i < lovePhrases.length; i++) {
-                floatingTexts.push({
-                    text: lovePhrases[i],
-                    x: (Math.random() - 0.5) * (canvas.width * 0.7),
-                    y: (Math.random() - 0.5) * (canvas.height * 0.7),
-                    z: Math.random() * canvas.width,
-                    size: 14
-                });
-            }
-
             function animate() {
-                ctx.fillStyle = 'rgba(0, 0, 0, 0.25)';
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
 
                 let cx = canvas.width / 2;
                 let cy = canvas.height / 2;
 
-                // Animación de estrellas en 3D hacia adelante
                 particles.forEach(p => {
                     p.z -= 0.8;
                     if (p.z <= 0) p.z = canvas.width;
@@ -453,27 +433,6 @@
                         ctx.beginPath();
                         ctx.arc(px, py, pSize, 0, Math.PI * 2);
                         ctx.fill();
-                    }
-                });
-
-                // Animación de mensajitos flotando en 3D hacia la pantalla
-                ctx.textAlign = 'center';
-                floatingTexts.forEach(ft => {
-                    ft.z -= 0.7; // Velocidad suave en 3D
-                    if (ft.z <= 0) ft.z = canvas.width;
-
-                    let k = 250 / ft.z;
-                    let px = ft.x * k + cx;
-                    let py = ft.y * k + cy;
-
-                    if (px >= 0 && px <= canvas.width && py >= 0 && py <= canvas.height) {
-                        let fontSize = Math.max(11, ft.size * k);
-                        ctx.font = `600 ${fontSize}px Poppins, sans-serif`;
-                        ctx.fillStyle = '#ffb6c1';
-                        ctx.shadowColor = '#ff1493';
-                        ctx.shadowBlur = 8;
-                        ctx.fillText(ft.text, px, py);
-                        ctx.shadowBlur = 0;
                     }
                 });
 
