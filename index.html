@@ -115,72 +115,32 @@
             justify-content: center;
         }
 
-        /* Fondo Galaxia Estrellada en CSS Puro (Cero consumo de procesador) */
+        /* Sección Galaxia 3D */
         #galaxy {
-            background: radial-gradient(circle at center, #1b0c2e 0%, #05020a 100%);
+            background: #000;
             overflow: hidden;
             position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
         }
-
-        /* Animación de Spider-Man y Hello Kitty */
-        .spider-kitty-container {
-            position: relative;
-            z-index: 3;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            animation: dropAndSwing 3s ease-in-out infinite alternate;
-            margin-bottom: 15px;
-        }
-
-        .web-string {
-            width: 2px;
-            height: 90px;
-            background: rgba(255, 255, 255, 0.7);
+        #galaxy-canvas {
             position: absolute;
-            top: -90px;
-            box-shadow: 0 0 6px #fff;
-        }
-
-        .couple-circle {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 4px solid #ff69b4;
-            box-shadow: 0 0 25px #ff1493;
-            background: linear-gradient(135deg, #ffb6c1, #ff1493);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .couple-circle img {
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-        }
-
-        @keyframes dropAndSwing {
-            0% { transform: translateY(-20px) rotate(-2deg); }
-            50% { transform: translateY(5px) rotate(2deg); }
-            100% { transform: translateY(-20px) rotate(-2deg); }
+            z-index: 1;
         }
 
         .galaxy-overlay {
             position: relative;
             z-index: 2;
             text-align: center;
+            pointer-events: none;
         }
         .galaxy-overlay h2 {
             font-family: 'Sacramento', cursive;
-            font-size: 2.8rem;
+            font-size: 3rem;
             color: #ffb6c1;
-            text-shadow: 0 0 15px #ff1493;
+            text-shadow: 0 0 20px #ff1493;
         }
 
         /* Sección Carta de Amor */
@@ -269,23 +229,18 @@
     <!-- Aplicación Principal -->
     <div id="main-app">
         <nav>
-            <button class="tab-btn active" onclick="switchTab(event, 'galaxy')">Galaxia 🌌</button>
+            <button class="tab-btn active" onclick="switchTab(event, 'galaxy')">Galaxia 3D 🌌</button>
             <button class="tab-btn" onclick="switchTab(event, 'message')">Carta de Amor 💌</button>
             <button class="tab-btn" onclick="switchTab(event, 'reasons')">19 Razones ✨</button>
         </nav>
 
-        <!-- Pestaña 1: Galaxia en CSS Puro (Fluida y sin trabarse) -->
+        <!-- Pestaña 1: Galaxia 3D Pura, Rápida y Fluida -->
         <div id="galaxy" class="section active">
-            <div class="spider-kitty-container">
-                <div class="web-string"></div>
-                <div class="couple-circle">
-                    <img src="https://i.imgur.com/7gK1Q2y.jpeg" alt="Spider-Man y Hello Kitty">
-                </div>
-            </div>
-
+            <canvas id="galaxy-canvas"></canvas>
+            
             <div class="galaxy-overlay">
                 <h2>Tu Sonrisa Es Mi Universo 💫</h2>
-                <p style="color: #ffb6c1; font-size: 1rem; text-shadow: 0 0 10px #ff1493; margin-top: 5px;">Feliz cumpleaños número 19, mi niña bonita ❤️</p>
+                <p style="color: #ffb6c1; font-size: 1.1rem; text-shadow: 0 0 10px #ff1493; margin-top: 10px;">Feliz cumpleaños número 19, mi niña bonita ❤️</p>
             </div>
         </div>
 
@@ -333,6 +288,7 @@
             setTimeout(() => {
                 document.getElementById('welcome-screen').style.display = 'none';
                 document.getElementById('main-app').style.display = 'flex';
+                initGalaxy();
             }, 500);
         }
 
@@ -380,6 +336,61 @@
                 textBox.style.opacity = 1;
                 currentReasonIndex = (currentReasonIndex + 1) % reasons.length;
             }, 150);
+        }
+
+        // Galaxia 3D ultrarrápida y limpia
+        function initGalaxy() {
+            const canvas = document.getElementById('galaxy-canvas');
+            const ctx = canvas.getContext('2d');
+            
+            function resize() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight - 60;
+            }
+            window.addEventListener('resize', resize);
+            resize();
+
+            let stars = [];
+            for (let i = 0; i < 75; i++) {
+                stars.push({
+                    x: (Math.random() - 0.5) * canvas.width * 1.5,
+                    y: (Math.random() - 0.5) * canvas.height * 1.5,
+                    z: Math.random() * canvas.width,
+                    size: Math.random() * 2.2 + 0.8,
+                    color: Math.random() > 0.4 ? '#ff1493' : '#ffb6c1'
+                });
+            }
+
+            function animate() {
+                ctx.fillStyle = 'rgba(5, 2, 10, 0.35)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                let cx = canvas.width / 2;
+                let cy = canvas.height / 2;
+
+                stars.forEach(s => {
+                    s.z -= 1.5;
+                    if (s.z <= 0) s.z = canvas.width;
+
+                    let k = 200 / s.z;
+                    let px = s.x * k + cx;
+                    let py = s.y * k + cy;
+
+                    if (px >= 0 && px <= canvas.width && py >= 0 && py <= canvas.height) {
+                        let starSize = Math.max(1, s.size * k);
+                        ctx.fillStyle = s.color;
+                        ctx.shadowColor = s.color;
+                        ctx.shadowBlur = 6;
+                        ctx.beginPath();
+                        ctx.arc(px, py, starSize, 0, Math.PI * 2);
+                        ctx.fill();
+                        ctx.shadowBlur = 0;
+                    }
+                });
+
+                requestAnimationFrame(animate);
+            }
+            animate();
         }
     </script>
 </body>
