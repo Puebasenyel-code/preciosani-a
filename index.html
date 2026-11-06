@@ -115,7 +115,7 @@
             justify-content: center;
         }
 
-        /* Sección Galaxia 3D y Animación */
+        /* Sección Galaxia 3D */
         #galaxy {
             background: #000;
             overflow: hidden;
@@ -187,7 +187,7 @@
             text-shadow: 0 0 15px #ff1493;
         }
 
-        /* Sección Mensaje Especial */
+        /* Sección Carta de Amor */
         .message-card {
             background: rgba(20, 10, 30, 0.95);
             border: 2px solid #ff69b4;
@@ -273,12 +273,12 @@
     <!-- Aplicación Principal -->
     <div id="main-app">
         <nav>
-            <button class="tab-btn active" onclick="switchTab(event, 'galaxy')">Galaxia & Spidey 🌌</button>
+            <button class="tab-btn active" onclick="switchTab(event, 'galaxy')">Galaxia 3D 🌌</button>
             <button class="tab-btn" onclick="switchTab(event, 'message')">Carta de Amor 💌</button>
             <button class="tab-btn" onclick="switchTab(event, 'reasons')">19 Razones ✨</button>
         </nav>
 
-        <!-- Pestaña 1: Galaxia 3D Ultra Ligera -->
+        <!-- Pestaña 1: Galaxia 3D con Mensajes 3D Flotantes y Animación -->
         <div id="galaxy" class="section active">
             <canvas id="galaxy-canvas"></canvas>
             
@@ -389,7 +389,7 @@
             }, 150);
         }
 
-        // Galaxia 3D optimizada para rendimiento fluido sin trabarse
+        // Galaxia 3D con Mensajitos Flotantes en 3D (Optimizada y Fluida)
         function initGalaxy() {
             const canvas = document.getElementById('galaxy-canvas');
             const ctx = canvas.getContext('2d');
@@ -401,10 +401,9 @@
             window.addEventListener('resize', resize);
             resize();
 
+            // Partículas de estrellas en 3D
             let particles = [];
-            const numParticles = 120; // Cantidad optimizada para que no se trabe en ningún cel
-
-            for (let i = 0; i < numParticles; i++) {
+            for (let i = 0; i < 90; i++) {
                 particles.push({
                     x: (Math.random() - 0.5) * canvas.width,
                     y: (Math.random() - 0.5) * canvas.height,
@@ -414,10 +413,11 @@
                 });
             }
 
+            // Mensajitos de amor viajando en el espacio 3D
             const lovePhrases = [
                 "Te Amo ❤️", "My Love ✨", "Eres preciosa 🌸", 
                 "Me encantas 😍", "Amor de mi vida 💫", "Niña bonita 💖", 
-                "19 Años 🎉", "Siempre tú 🌟"
+                "19 Años 🎉", "Siempre tú 🌟", "Mi universito 🌌", "Te adoro 💕"
             ];
 
             let floatingTexts = [];
@@ -427,19 +427,20 @@
                     x: (Math.random() - 0.5) * (canvas.width * 0.7),
                     y: (Math.random() - 0.5) * (canvas.height * 0.7),
                     z: Math.random() * canvas.width,
-                    size: 13
+                    size: 14
                 });
             }
 
             function animate() {
-                ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.25)';
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
 
                 let cx = canvas.width / 2;
                 let cy = canvas.height / 2;
 
+                // Animación de estrellas en 3D hacia adelante
                 particles.forEach(p => {
-                    p.z -= 1.0;
+                    p.z -= 0.8;
                     if (p.z <= 0) p.z = canvas.width;
 
                     let k = 250 / p.z;
@@ -455,9 +456,10 @@
                     }
                 });
 
+                // Animación de mensajitos flotando en 3D hacia la pantalla
                 ctx.textAlign = 'center';
                 floatingTexts.forEach(ft => {
-                    ft.z -= 0.8;
+                    ft.z -= 0.7; // Velocidad suave en 3D
                     if (ft.z <= 0) ft.z = canvas.width;
 
                     let k = 250 / ft.z;
@@ -465,10 +467,13 @@
                     let py = ft.y * k + cy;
 
                     if (px >= 0 && px <= canvas.width && py >= 0 && py <= canvas.height) {
-                        let fontSize = Math.max(10, ft.size * k);
+                        let fontSize = Math.max(11, ft.size * k);
                         ctx.font = `600 ${fontSize}px Poppins, sans-serif`;
                         ctx.fillStyle = '#ffb6c1';
+                        ctx.shadowColor = '#ff1493';
+                        ctx.shadowBlur = 8;
                         ctx.fillText(ft.text, px, py);
+                        ctx.shadowBlur = 0;
                     }
                 });
 
