@@ -115,7 +115,7 @@
             justify-content: center;
         }
 
-        /* Sección Galaxia 3D */
+        /* Sección Galaxia 3D y Animación de Spider-Man & Hello Kitty */
         #galaxy {
             background: #000;
             overflow: hidden;
@@ -130,6 +130,51 @@
             z-index: 1;
         }
 
+        .spider-kitty-container {
+            position: relative;
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: dropAndSwing 3s ease-in-out infinite alternate;
+            margin-bottom: 15px;
+        }
+
+        .web-string {
+            width: 2px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.6);
+            position: absolute;
+            top: -100px;
+            box-shadow: 0 0 5px #fff;
+        }
+
+        .couple-circle {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 4px solid #ff69b4;
+            box-shadow: 0 0 25px #ff1493, inset 0 0 15px #ff69b4;
+            background: linear-gradient(135deg, #ffb6c1, #ff1493);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .couple-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @keyframes dropAndSwing {
+            0% { transform: translateY(-30px) rotate(-3deg); }
+            50% { transform: translateY(10px) rotate(3deg); }
+            100% { transform: translateY(-30px) rotate(-3deg); }
+        }
+
         .galaxy-overlay {
             position: relative;
             z-index: 2;
@@ -138,16 +183,16 @@
         }
         .galaxy-overlay h2 {
             font-family: 'Sacramento', cursive;
-            font-size: 3rem;
+            font-size: 2.8rem;
             color: #ffb6c1;
             text-shadow: 0 0 20px #ff1493;
         }
 
-        /* Sección Carta de Amor */
+        /* Sección Mensaje Especial */
         .message-card {
-            background: rgba(20, 10, 30, 0.95);
+            background: rgba(20, 10, 30, 0.9);
             border: 2px solid #ff69b4;
-            padding: 25px;
+            padding: 30px;
             border-radius: 20px;
             max-width: 650px;
             width: 100%;
@@ -160,23 +205,23 @@
         .message-card h2 {
             font-family: 'Sacramento', cursive;
             color: #ffb6c1;
-            font-size: 2.8rem;
+            font-size: 3rem;
             text-align: center;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             text-shadow: 0 0 10px #ff1493;
         }
         .message-card p {
-            font-size: 1rem;
-            line-height: 1.7;
+            font-size: 1.05rem;
+            line-height: 1.8;
             color: #fce4ec;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
         }
         .message-signature {
             text-align: right;
             font-family: 'Sacramento', cursive;
-            font-size: 1.8rem;
-            color: #ffb6c1;
-            margin-top: 15px;
+            font-size: 2rem;
+            color: #ff69b4;
+            margin-top: 20px;
         }
 
         /* Sección Razones (Ticket) */
@@ -229,22 +274,29 @@
     <!-- Aplicación Principal -->
     <div id="main-app">
         <nav>
-            <button class="tab-btn active" onclick="switchTab(event, 'galaxy')">Galaxia 3D 🌌</button>
+            <button class="tab-btn active" onclick="switchTab(event, 'galaxy')">Galaxia & Spidey 🌌</button>
             <button class="tab-btn" onclick="switchTab(event, 'message')">Carta de Amor 💌</button>
             <button class="tab-btn" onclick="switchTab(event, 'reasons')">19 Razones ✨</button>
         </nav>
 
-        <!-- Pestaña 1: Galaxia 3D Pura y Rápida -->
+        <!-- Pestaña 1: Galaxia 3D con Spider-Man y Hello Kitty -->
         <div id="galaxy" class="section active">
             <canvas id="galaxy-canvas"></canvas>
             
+            <div class="spider-kitty-container">
+                <div class="web-string"></div>
+                <div class="couple-circle">
+                    <img src="https://i.imgur.com/7gK1Q2y.jpeg" alt="Spider-Man y Hello Kitty">
+                </div>
+            </div>
+
             <div class="galaxy-overlay">
                 <h2>Tu Sonrisa Es Mi Universo 💫</h2>
-                <p style="color: #ffb6c1; font-size: 1.1rem; text-shadow: 0 0 10px #ff1493; margin-top: 10px;">Feliz cumpleaños número 19, mi niña bonita ❤️</p>
+                <p style="color: #ffb6c1; font-size: 1.1rem; text-shadow: 0 0 10px #ff1493; margin-top: 5px;">Feliz cumpleaños número 19, mi niña bonita ❤️</p>
             </div>
         </div>
 
-        <!-- Pestaña 2: Tu Carta de Amor -->
+        <!-- Pestaña 2: Tu Mensaje Detallista Ampliado -->
         <div id="message" class="section">
             <div class="message-card">
                 <h2>Para la dueña de mi corazón</h2>
@@ -255,7 +307,7 @@
                     Todos los días quiero despertar y saber que estás conmigo. Me hace feliz saber, mi amor, que a pesar de todo lo que hemos pasado o ha pasado, hemos podido construir una confianza y un nivel de complicidad único que me encanta, y me encantaría poder seguir viviendo eso contigo por mucho tiempo más.
                 </p>
                 <p>
-                    En este día tan especial quiero que sepas que me da mucho gusto, mi amor bonito, que seas mi novia. También quiero que sigas cumpliendo muchos años más al lado mío y de tu familia, brillando con esa luz tan hermosa que te caracteriza mientras te esfuerzas por tu carrera.
+                    En este día tan especial quiero que sepas que me da mucho gusto, mi amor bonito, que seas mi novia. También quiero que sigues cumpliendo muchos años más al lado mío y de tu familia, brillando con esa luz tan hermosa que te caracteriza mientras te esfuerzas por tu carrera.
                 </p>
                 <p>
                     Quiero que en realidad, mi amor, lo nuestro se dé bonito. Haré lo posible para ir a verte y poder compartir contigo, apreciarte mi niña bonita de cerca; no pararía de mirarte. Quiero que sepas que se me hace mucha ilusión verte y hablar contigo.
@@ -289,7 +341,7 @@
                 document.getElementById('welcome-screen').style.display = 'none';
                 document.getElementById('main-app').style.display = 'flex';
                 initGalaxy();
-            }, 500);
+            }, 800);
         }
 
         function switchTab(evt, tabName) {
@@ -335,10 +387,9 @@
                 textBox.innerText = reasons[currentReasonIndex];
                 textBox.style.opacity = 1;
                 currentReasonIndex = (currentReasonIndex + 1) % reasons.length;
-            }, 150);
+            }, 200);
         }
 
-        // Galaxia 3D ultrarrápida, limpia y fluida
         function initGalaxy() {
             const canvas = document.getElementById('galaxy-canvas');
             const ctx = canvas.getContext('2d');
@@ -350,41 +401,40 @@
             window.addEventListener('resize', resize);
             resize();
 
-            let stars = [];
-            for (let i = 0; i < 75; i++) {
-                stars.push({
-                    x: (Math.random() - 0.5) * canvas.width * 1.5,
-                    y: (Math.random() - 0.5) * canvas.height * 1.5,
+            let particles = [];
+            const numParticles = 400;
+
+            for (let i = 0; i < numParticles; i++) {
+                particles.push({
+                    x: (Math.random() - 0.5) * canvas.width,
+                    y: (Math.random() - 0.5) * canvas.height,
                     z: Math.random() * canvas.width,
-                    size: Math.random() * 2.2 + 0.8,
-                    color: Math.random() > 0.4 ? '#ff1493' : '#ffb6c1'
+                    size: Math.random() * 2 + 1,
+                    color: Math.random() > 0.5 ? '#ff1493' : '#ffb6c1'
                 });
             }
 
             function animate() {
-                ctx.fillStyle = 'rgba(5, 2, 10, 0.35)';
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
 
                 let cx = canvas.width / 2;
                 let cy = canvas.height / 2;
 
-                stars.forEach(s => {
-                    s.z -= 1.5;
-                    if (s.z <= 0) s.z = canvas.width;
+                particles.forEach(p => {
+                    p.z -= 1.5;
+                    if (p.z <= 0) p.z = canvas.width;
 
-                    let k = 200 / s.z;
-                    let px = s.x * k + cx;
-                    let py = s.y * k + cy;
+                    let k = 250 / p.z;
+                    let px = p.x * k + cx;
+                    let py = p.y * k + cy;
 
                     if (px >= 0 && px <= canvas.width && py >= 0 && py <= canvas.height) {
-                        let starSize = Math.max(1, s.size * k);
-                        ctx.fillStyle = s.color;
-                        ctx.shadowColor = s.color;
-                        ctx.shadowBlur = 6;
+                        let pSize = Math.max(1, p.size * k);
+                        ctx.fillStyle = p.color;
                         ctx.beginPath();
-                        ctx.arc(px, py, starSize, 0, Math.PI * 2);
+                        ctx.arc(px, py, pSize, 0, Math.PI * 2);
                         ctx.fill();
-                        ctx.shadowBlur = 0;
                     }
                 });
 
