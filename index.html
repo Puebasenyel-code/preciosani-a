@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -18,7 +19,6 @@
             overflow-x: hidden;
             height: 100vh;
         }
-        /* Pantalla de inicio */
         #welcome-screen {
             position: fixed;
             top: 0;
@@ -58,20 +58,16 @@
             transform: scale(1.1);
             background: #ff69b4;
         }
-
-        /* Contenedor Principal */
         #main-app {
             display: none;
             height: 100vh;
             flex-direction: column;
         }
-
-        /* Barra de Navegación */
         nav {
             background: rgba(26, 9, 37, 0.95);
             display: flex;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
             padding: 12px;
             border-bottom: 2px solid #ff69b4;
             position: fixed;
@@ -85,11 +81,11 @@
             background: transparent;
             border: 1px solid #ff69b4;
             color: #ffb6c1;
-            padding: 6px 14px;
+            padding: 6px 12px;
             border-radius: 20px;
             cursor: pointer;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             transition: 0.3s;
             white-space: nowrap;
         }
@@ -98,8 +94,6 @@
             color: white;
             box-shadow: 0 0 12px #ff69b4;
         }
-
-        /* Secciones */
         .section {
             display: none;
             height: calc(100vh - 60px);
@@ -114,8 +108,6 @@
             align-items: center;
             justify-content: center;
         }
-
-        /* Sección Galaxia 3D */
         #galaxy {
             background: #000;
             overflow: hidden;
@@ -142,8 +134,6 @@
             color: #ffb6c1;
             text-shadow: 0 0 20px #ff1493;
         }
-
-        /* Sección Razones (Ticket) */
         .ticket-card {
             background: #fff;
             color: #333;
@@ -180,8 +170,6 @@
             cursor: pointer;
             font-weight: bold;
         }
-
-        /* Sección Mi Niña Bonita */
         .cute-card {
             background: rgba(255, 182, 193, 0.1);
             border: 2px solid #ff69b4;
@@ -207,25 +195,59 @@
             font-size: 2rem;
             margin-top: 15px;
         }
+        .letter-container {
+            background: rgba(26, 9, 37, 0.9);
+            border: 2px solid #ff69b4;
+            padding: 30px;
+            border-radius: 20px;
+            max-width: 650px;
+            width: 100%;
+            max-height: 75vh;
+            overflow-y: auto;
+            box-shadow: 0 0 25px rgba(255, 105, 180, 0.4);
+            z-index: 2;
+            text-align: left;
+        }
+        .letter-container h2 {
+            font-family: 'Sacramento', cursive;
+            font-size: 2.8rem;
+            color: #ffb6c1;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #ff1493;
+        }
+        .letter-content {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #fce4ec;
+        }
+        .letter-content p {
+            margin-bottom: 15px;
+        }
+        .letter-signature {
+            margin-top: 25px;
+            text-align: right;
+            font-family: 'Sacramento', cursive;
+            font-size: 2rem;
+            color: #ffb6c1;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Pantalla de Bienvenida -->
     <div id="welcome-screen">
         <h1>Felices 19 Años, Mi Niña Bonita 💖</h1>
         <button class="btn-start" onclick="startExperience()">Entrar a tu sorpresa ✨</button>
     </div>
 
-    <!-- Aplicación Principal -->
     <div id="main-app">
         <nav>
             <button class="tab-btn active" onclick="switchTab(event, 'galaxy')">Galaxia 3D 🌌</button>
             <button class="tab-btn" onclick="switchTab(event, 'reasons')">19 Razones 💌</button>
             <button class="tab-btn" onclick="switchTab(event, 'profile')">Mi Niña Bonita 🌸</button>
+            <button class="tab-btn" onclick="switchTab(event, 'letter')">Mi Mensaje 💖</button>
         </nav>
 
-        <!-- Pestaña 1: Galaxia 3D Interactiva -->
         <div id="galaxy" class="section active">
             <canvas id="galaxy-canvas"></canvas>
             <div class="galaxy-overlay">
@@ -234,7 +256,6 @@
             </div>
         </div>
 
-        <!-- Pestaña 2: Razones -->
         <div id="reasons" class="section">
             <div class="ticket-card">
                 <h3>🎟️ Recibo de Amor N.° 19</h3>
@@ -246,7 +267,6 @@
             </div>
         </div>
 
-        <!-- Pestaña 3: Niña Bonita -->
         <div id="profile" class="section">
             <div class="cute-card">
                 <h2>Para la niña de mis ojos</h2>
@@ -254,6 +274,25 @@
                     Hoy cumples 19 años y le doy gracias a la vida por tenerte. Eres una estudiante de medicina maravillosa, una persona con un corazón gigante, de carita preciosa y una sonrisa que es mi amanecer favorito todos los días. 
                 </p>
                 <div class="decor-icons">🎀 🐱 ⭐ 🐶 💖</div>
+            </div>
+        </div>
+
+        <div id="letter" class="section">
+            <div class="letter-container">
+                <h2>Para el amor de mi vida</h2>
+                <div class="letter-content">
+                    <p>Hoy cumples 19 años y le doy gracias a la vida por tenerte. Eres una niña muy pero muy preciosa sabes lo mucho q te aprecio , una persona con un corazón gigante, de carita preciosa y una sonrisa que es mi amanecer favorito todos los días.</p>
+                    <p>Todos los dias quiero despertar y saber q estas conmigo , me hace feliz saber mi amor que apesar de todo lo q hemos pasado o a pasadp hemos podido construir una confianza , un nivel de complicidad me encanta y me encantaria poder seguir viviendo eso contigo</p>
+                    <p>En este dia tan especia quiero que sepas q me da mucho gusto mi amor bonito q seas mi novia y tambien quiero q sigas cumpliendo muchos años a lado mio y de tu familia</p>
+                    <p>Quiero que en realidad mi amor lo nuestro se de bonito. Hare lo posible para ir a verte y poder compartir contigo apreciarte mi niña bonita de cerca no pararia de mirarte quiero q depas q se me hace mucha ilusion verte hablar contigo</p>
+                    <p><em>(Y es que pensar en el momento en que nos volvamos a encontrar me llena el alma de alegría; imaginarme llegando a abrazarte, tomándote de la mano y compartiendo momentos juntos es la fuerza que me impulsa todos los días. Admiro tanto la hermosa mujer en la que te estás convirtiendo, tu disciplina, tus desvelos y esa vocación tan noble que tienes).</em></p>
+                    <p>Se que no tenemos mucho en comun a nivel fisico somos totalmente diferentes pero mas a nivel escencia conpartimos el mismo pensamiento... Me sorprende cómo, a pesar de la distancia, logramos conectar tan profundo y entendernos de una forma tan especial.</p>
+                    <p>Te quiero mucho mucho. Te amo demasiado espero que sepas q siempre te amare y te dare mucho amor te amo mucho que dios te bendiga y te de sabiduria para terminar tu carrera , en el nombre de dios mi amor. Que cada meta que te propongas se haga realidad, porque sé lo mucho que te esfuerzas y el futuro tan brillante que tienes por delante.</p>
+                    <p>Gracias por existir, por elegirme, por compartir tu hermosa vida conmigo y por hacer mis días infinitamente más felices con solo saber que estás.</p>
+                </div>
+                <div class="letter-signature">
+                    Te amo mi amor Yanssy Daniela 💖
+                </div>
             </div>
         </div>
     </div>
@@ -264,7 +303,7 @@
             setTimeout(() => {
                 document.getElementById('welcome-screen').style.display = 'none';
                 document.getElementById('main-app').style.display = 'flex';
-                initGalaxy(); // Iniciar animación 3D al entrar
+                initGalaxy();
             }, 800);
         }
 
@@ -281,7 +320,6 @@
             evt.currentTarget.classList.add('active');
         }
 
-        // 19 Razones
         const reasons = [
             "1. Porque tu sonrisa es la luz que atraviesa cualquier oscuridad.",
             "2. Por la forma en que te esfuerzas y estudias con tanta dedicación.",
@@ -315,7 +353,6 @@
             }, 200);
         }
 
-        // Motor de la Galaxia 3D con Partículas y Corazón en Espiral
         function initGalaxy() {
             const canvas = document.getElementById('galaxy-canvas');
             const ctx = canvas.getContext('2d');
@@ -347,7 +384,6 @@
                 let cx = canvas.width / 2;
                 let cy = canvas.height / 2;
 
-                // Dibujar partículas de la galaxia en rotación
                 particles.forEach(p => {
                     p.z -= 1.5;
                     if (p.z <= 0) p.z = canvas.width;
@@ -365,7 +401,6 @@
                     }
                 });
 
-                // Dibujar el corazón central parpadeante estilo 3D
                 ctx.save();
                 ctx.translate(cx, cy - 50);
                 let scale = 1 + Math.sin(Date.now() * 0.005) * 0.1;
@@ -373,7 +408,6 @@
                 ctx.beginPath();
                 let topCurveHeight = 20;
                 ctx.moveTo(0, topCurveHeight);
-                // Dibujar forma de corazón con partículas/brillo
                 ctx.bezierCurveTo(0, 0, -40, -40, -40, -70);
                 ctx.bezierCurveTo(-40, -110, 0, -110, 0, -60);
                 ctx.bezierCurveTo(0, -110, 40, -110, 40, -70);
@@ -391,3 +425,5 @@
     </script>
 </body>
 </html>
+
+```
